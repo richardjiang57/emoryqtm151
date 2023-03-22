@@ -100,7 +100,8 @@ Try it yourself!
 -- Make sure to deparate arguments by a semicolon!
 
 
-
+INSERT INTO drivers VALUES(5, 'Daniel Park', 'Korean', 23);
+INSERT INTO drivers VALUES(6, 'Richard Jiang', 'American', 45)
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
 
@@ -187,7 +188,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
+SELECT nationality, driver_id FROM drivers
+WHERE victories>60;
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>

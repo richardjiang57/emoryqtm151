@@ -35,6 +35,7 @@ United States Congress dataset
 
 Create table from codebook/dictionary
 -- SQLBook: Code
+-- Active: 1674444757671@@127.0.0.1@5432@postgres
 -- We start by deleting the old table
 -- SQL does not allow you to create a table if one already exists
 DROP TABLE IF EXISTS us_congress_members;
@@ -88,12 +89,40 @@ Try it yourself!
 DROP TABLE IF exists bills_subjects;
 
 CREATE TABLE bills_subjects(
-    congress int,
+    "Congress" int,
     bill_number int,
     bill_type varchar(30),
     bill_subject varchar(30)
 )
 
+-- SQLBook: Markup
+# <span style="color:darkblue"> II. Import CSV into SQL </span>
+
+<font size = "5">
+
+(a) **Connect** to your SQL server as in Lecture 17
+
+(b) **Copy the pathname** of the ".csv" file
+
+- Open the folder in VS-Code
+- Right click on the file
+- Select "Copy Path" and paste below
+
+$\quad$ <img src="figures/get_file_path.png" alt="drawing" width="400"/>
+
+
+(c) **Import row data**
+
+For the instructor's computer this is:
+
+<font size = "3">
+
+
+```sql
+COPY us_congress_members
+FROM 'D:\GitHub\qtm151spring2023\Lecture 18\data\us_congress_members.csv' ```
+WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
+```
 -- SQLBook: Code
 -- The argument associaated with COPY is the dataset in our server
 -- The argument associaated with FROM is a filepath name
@@ -128,14 +157,14 @@ Try it yourself!
 SELECT * FROM us_congress_members
 ```
 -- SQLBook: Code
+-- Active: 1674444757671@@127.0.0.1@5432@postgres
 -- Write your own code
 -- Note in the instructor's computer this is:
 -- You just have to change the FROM argument
 --
-COPY us_congress_members
-FROM 
-WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
-
+-- COPY us_congress_members
+-- FROM '/private/tmp/data/us_congress_members.csv'
+-- WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
 
 
@@ -222,7 +251,7 @@ Merge Databases
 SELECT * 
 FROM bills_actions
 LEFT JOIN us_congress_members
-ON us_congress_members_actions.member_id  = bills_actions.member_id;
+ON bills_actions.member_id  = bills_actions.member_id;
 
 -- Note: This command may take a few seconds to run. This is normal
 -- In the instructor's computer this took 2 min but may take more 

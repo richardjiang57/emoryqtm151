@@ -180,11 +180,11 @@ SELECT * FROM bills_actions
 -- Write your own code
 -- Note in the instructor's computer this is:
 -- You just have to change the FROM argument
--- COPY bills_actions
--- FROM '/private/tmp/data/bills_actions.csv'
--- WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
+COPY bills_actions
+FROM 'C:\Users\solrf\Documents\GitHub\emoryqtm151\Lecture 18\data\bills_actions.csv'
+WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
-
+SELECT * FROM bills_actions
 
 
 -- SQLBook: Markup
